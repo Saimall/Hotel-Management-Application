@@ -1,0 +1,20 @@
+<h2>Reservation List</h2>
+<!-- 
+//only if we have one reservation the show ul else call no Reservation function i.e ng-template -->
+<ul *ngIf="reservations.length; else noReservation" >
+    <li *ngFor="let reservation of reservations" >
+        Guest:{{reservation.guestName}}<br>
+        Email:{{reservation.guestEmail}}<br>
+        Room-No:{{reservation.roomNumber}}<br>
+        Check-In-Date:{{reservation.checkInDate}}<br>
+        Check-Out-Date:{{reservation.checkOutDate}}<br>
+        ID:{{reservation.id}}
+        <button (click)="onDelete(reservation.id)">Delete</button>
+    </li>
+</ul>
+<!-- 
+//below is like a function which can be activated and dispplayed in a specifc condiftion and #noReservation is the name of function which can be called -->
+<ng-template #noReservation>
+
+    <p>No reservation avalaible</p>
+</ng-template>
