@@ -1,54 +1,72 @@
+<app-home></app-home>
+
+<hr>
+<h3 class="mt-5 mb-3">Create a new reservation</h3>
 <form [formGroup]="reservationForm"  (ngSubmit)="onSubmit()">
 
-  <div>
-      <label>Check-In-Date:</label>
-      <input type="date" formControlName="checkInDate">
-      <div *ngIf="reservationForm.get('checkInDate')?.invalid && reservationForm.get('checkInDate')?.touched">
+  <div class="row mb-3">
+      <div class ="col">
+      <label class="form-label">Check-In-Date:</label>
+      <input class="form-control" type="date" formControlName="checkInDate">
+      <small class="text-danger" *ngIf="reservationForm.get('checkInDate')?.invalid && reservationForm.get('checkInDate')?.touched">
           Check in Date is required
           <!-- //above is the message we can see  and added touched so if user touched and not filled then it will show message-->
-      </div> 
+      </small> 
+    </div>
+    <div class="col">
+        <label class="form-label">Check-Out-Date:</label>
+        <input class="form-control" type="date" formControlName="checkOutDate">
+        <small class="text-danger" *ngIf="reservationForm.get('checkOutDate')?.invalid && reservationForm.get('checkOutDate')?.touched">
+            Check Out Date is required
+            <!-- //above is the message we can see  and added touched so if user touched and not filled then it will show message-->
+        </small> 
+    </div>
       <!-- //if this field is invalid then we will hightl this input box -->
   </div>
 
-  <div>
-    <label>Check-Out-Date:</label>
-    <input type="date" formControlName="checkOutDate">
-    <div *ngIf="reservationForm.get('checkOutDate')?.invalid && reservationForm.get('checkOutDate')?.touched">
-        Check Out Date is required
-        <!-- //above is the message we can see  and added touched so if user touched and not filled then it will show message-->
-    </div> 
-</div>
+  <div class="row mb-3">
 
-<div>
-    <label>GuestName:</label>
-    <input type="text" formControlName="guestName">
-    <div *ngIf="reservationForm.get('guestName')?.invalid && reservationForm.get('guestName')?.touched">
+    <div class="col">
+
+ 
+
+<div class="mb-3">
+    <label class="form-label">GuestName:</label>
+    <input class="form-control" type="text" formControlName="guestName">
+    <small class="text-danger" *ngIf="reservationForm.get('guestName')?.invalid && reservationForm.get('guestName')?.touched">
         Guest Name is required
         <!-- //above is the message we can see  and added touched so if user touched and not filled then it will show message-->
-    </div> 
+    </small> 
 </div>
 
-<div>
-    <label>Guest Email:</label>
-    <input type="text" formControlName="guestEmail">
-    <div *ngIf="reservationForm.get('guestEmail')?.invalid && reservationForm.get('guestEmail')?.touched">
+</div>
+
+<div class="col">
+
+    <label class="form-label">Guest Email:</label>
+    <input class="form-control" type="text" formControlName="guestEmail">
+    <small class="text-danger" *ngIf="reservationForm.get('guestEmail')?.invalid && reservationForm.get('guestEmail')?.touched">
        GuestEmail is required
         <!-- //above is the message we can see  and added touched so if user touched and not filled then it will show message-->
-    </div> 
+    </small> 
 </div>
 
-<div>
-    <label>Room Number:</label>
-    <input type="number" formControlName="roomNumber">
-    <div *ngIf="reservationForm.get('roomNumber')?.invalid && reservationForm.get('roomNumber')?.touched">
+<div class="row ">
+    <div class="col-3">
+
+    <label class="form-label">Room Number:</label>
+    <input class="form-control" type="number" formControlName="roomNumber">
+    <small class="text-danger" *ngIf="reservationForm.get('roomNumber')?.invalid && reservationForm.get('roomNumber')?.touched">
       Room Number is required
         <!-- //above is the message we can see  and added touched so if user touched and not filled then it will show message-->
-    </div> 
+    </small> 
+</div>
+
 </div>
 
 
-
-    <button type="submit" [disabled]="reservationForm.invalid">Add</button> 
+</div>
+    <button class="btn btn-primary" type="submit" [disabled]="reservationForm.invalid">Add</button> 
     <!-- //the disabled is binded to reservationForm wheren if form is invalid then disbale will be true it is like a binary -->
 
 </form>

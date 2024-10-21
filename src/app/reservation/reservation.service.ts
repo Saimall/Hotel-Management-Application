@@ -12,7 +12,7 @@ export class ReservationService {
 
 constructor(){
 
-  let savedreservation=localStorage.getItem("reservations");
+  let savedreservation=localStorage.getItem("reservation");
 
   if(savedreservation!=null){
     this.reservations=JSON.parse( savedreservation);
@@ -51,12 +51,18 @@ constructor(){
 
 
 
-  updateReservation(updateReservation :Reservation):void{
-    let index=this.reservations.findIndex(res=>res.id===updateReservation.id)||-1;
+  updateReservation(id:string,updateReservation :Reservation):void{
+    let index = this.reservations.findIndex(res=> res.id===id);
 
     this.reservations[index]=updateReservation;
+    this.reservations[index].id=id;
     localStorage.setItem("reservation",JSON.stringify(this.reservations));
+
+    console.log("updated sucessfully");
   }
 
 
 }
+
+
+

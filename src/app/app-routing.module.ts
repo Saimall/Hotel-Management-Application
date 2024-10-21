@@ -8,6 +8,7 @@ const routes: Routes = [
   {path:"",component:HomeComponent}, //"" this means empty or home route
   {path:"list",component:ReservationListComponent},
   {path:"new",component:ReservationFormComponent},
+  {path:"edit/:id",component:ReservationFormComponent}
 ];
 
 @NgModule({

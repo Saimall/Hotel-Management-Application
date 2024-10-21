@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Reservation } from '../models/reservation';
 import { ReservationService } from '../reservation/reservation.service';
 
+import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-reservation-list',
   templateUrl: './reservation-list.component.html',
@@ -26,6 +28,7 @@ export class ReservationListComponent {
 
 
 
+
   }
 
 
@@ -38,7 +41,16 @@ export class ReservationListComponent {
 
     console.log("New reservations: ", this.reservations);
 
-    localStorage.setItem("reservations", JSON.stringify(this.reservations));
+    localStorage.setItem("reservation", JSON.stringify(this.reservations));
+
+  }
+
+  onUpdate(id:any){
+
+    
+
+    
+
 
   }
 
