@@ -24,7 +24,10 @@ export class ReservationListComponent {
 
   ngOnInit(): void {
 
-    this.reservations = this.reservationservice.getReservations();
+    this.reservationservice.getReservations().subscribe(reservations=>{
+      this.reservations = reservations;
+    }
+    );
 
 
 
@@ -36,22 +39,11 @@ export class ReservationListComponent {
 
     console.log("Delet functionlaity");
     console.log(id)
-    this.reservations = this.reservations.filter(res => res.id != id);
-
-
-    console.log("New reservations: ", this.reservations);
-
-    localStorage.setItem("reservation", JSON.stringify(this.reservations));
-
+    this.reservationservice.deleteReservation(id).subscribe(()=>{
+      console.log("Reservation is proceeding");
+    })
   }
 
-  onUpdate(id:any){
-
-    
-
-    
-
-
-  }
+ 
 
 }

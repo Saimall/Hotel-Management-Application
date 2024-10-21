@@ -44,11 +44,15 @@ export class ReservationFormComponent implements OnInit {
     console.log(id);
 
     if (id) {
-      let reservation = this.reservationservice.getReservation(id);
-      console.log(reservation)
-      if (reservation) {
-        this.reservationForm.patchValue(reservation);
-      }
+       this.reservationservice.getReservation(id).subscribe(reservation=>{
+        if (reservation) {
+          console.log(reservation);
+          const{id,...formvalues}=reservation;
+          this.reservationForm.patchValue(formvalues);
+        }
+      });
+
+     
     }
 
 
@@ -71,13 +75,17 @@ export class ReservationFormComponent implements OnInit {
     
       if (id) {
 
-        this.reservationservice.updateReservation(id, reservation);
+       this.reservationservice.updateReservation(id,reservation).subscribe(()=>{
+         console.log("upadeted called");
+       });
 
         this.router.navigate(["/list"]);
       }
       else {
 
-        this.reservationservice.addReservation(reservation);
+        this.reservationservice.addReservation(reservation).subscribe(()=>{
+          console.log("Added called");
+        });
 
         this.router.navigate(["/list"]); // every package that is imported to use that instances we need to use angular dependence injection using constructor
       }
@@ -87,4 +95,6 @@ export class ReservationFormComponent implements OnInit {
     }
   }
 
-}
+
+
+  }
